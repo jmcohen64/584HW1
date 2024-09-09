@@ -1,0 +1,246 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[top=.5in,textheight=9in]{geometry}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{enumerate}
+\usepackage{xfrac}
+
+
+% Everything after a % sign is commented out.
+% This is sometimes useful to write notes to yourself
+% or to add spacing in the tex file so that it is easier
+% to read.
+
+
+% Some useful `macros'
+% % % Feel free to define your own!
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\cS}{\mathcal S}
+
+
+% Here is a pretty way to write down the problem
+\newtheorem{innerprob}{Problem}
+\newenvironment{prob}[1]
+  {\renewcommand\theinnerprob{#1}\innerprob}
+  {\endinnerprob}
+% Here is a pretty way to wrote down the solution
+\newenvironment{solution}
+  {\renewcommand\qedsymbol{}\begin{proof}[Solution]}
+  {\end{proof}\bigskip}
+
+\setlength\parindent{0cm}
+\setlength\parskip{5pt plus 1pt minus 1pt}
+
+
+\title{Assignment \#1\\Math 584A}
+\author{
+	John Cohen
+	}
+\date{Due September 10th at 1 am (via Gradescope)}
+
+
+
+
+
+
+
+
+
+\begin{document}
+
+\maketitle
+
+For uploading to Gradescope, it will be easiest to put each solution on a different page.  The code for this is commented out in the tex file.
+
+% Don't write anything between \begin{document}
+% and \maketitle or it will show up before your name
+% and the rest of the title stuff.
+
+
+
+%State the problem
+%\begin{prob}{PROBLEM #}
+%  WRITE PROBLEM
+%\end{prob}
+
+% Note prob is custom-made above will
+
+
+
+\begin{prob}{1}  % `prob' starts the (custom made, above) problem
+			%  and the 
+Fix any two points $x,y\in \R^n$.  Show that
+\[
+	\lim_{p\to\infty} d_p(x,y) = d_\infty(x,y).
+\]
+\end{prob}
+%Uncomment the lines below to solve the problem
+\begin{solution}
+	Let $i\leq n$ be defined such that $|x_i-y_i| \geq |x_m-y_m|$ for all $m\leq n$. By definition, $|x_i-y_i| = d_\infty(x,y)$. Notice that $$|x_i-y_i| \leq |x_1-y_1| + \dotsc + |x_i-y_i|+ \dotsc + |x_n-y_n|\leq n|x_i-y_i|.$$ Thus, $$|x_i-y_i|^p \leq |x_1-y_1|^p + \dotsc + |x_i-y_i|^p+ \dotsc + |x_n-y_n|^p\leq n|x_i-y_i|^p.$$ By taking the each expression in the inequality to the $1/p$ power, we get $$(|x_i-y_i|^p)^{\frac{1}{p}} \leq (|x_1-y_1|^p + \dotsc + |x_i-y_i|^p+ \dotsc +|x_n-y_n|^p)^{\frac{1}{p}} \leq (n|x_i-y_i|^p)^{\frac{1}{p}},$$ and $$|x_i-y_i| \leq d_p(x,y) \leq n^\frac{1}{p}|x_i-y_i|.$$ Taking the limit as p approaches infinity gives $$\lim_{p\to\infty}|x_i-y_i| \leq \lim_{p\to\infty}d_p(x,y) \leq \lim_{p\to\infty}n^\frac{1}{p}|x_i-y_i|.$$ Thus, $$d_\infty(x,y) \leq \lim_{p\to\infty}d_p(x,y) \leq d_\infty(x,y).$$ Therefore, by the Squeeze Theorem,
+	\[
+	\lim_{p\to\infty} d_p(x,y) = d_\infty(x,y).
+	\]
+\end{solution}
+\newpage
+
+
+
+
+
+
+\begin{prob}{2}  % `prob' starts the (custom made, above) problem
+			%  and the 
+Fix $p_1,p_2 \in [1,\infty]$ such that $p_1 < p_2$ (we allow the case $p_2 = \infty$).  Find constants $\underline C, \overline C >0$ such that
+\[
+	\underline C d_{p_1}(\bar x, \bar y)
+		\leq d_{p_2}(\bar x, \bar y)
+		\leq \overline C d_{p_1}(\bar x, \bar y),
+\]
+for all $x,y \in \R^N$.  Hint: you may find it helpful to do the case $p_1 = 1$ and $p_2=\infty$ first.
+\end{prob}
+%Uncomment the lines below to solve the problem
+%\begin{solution}
+%This is a very elegant solution.
+%\end{solution}
+%\newpage
+
+
+
+
+
+
+\begin{prob}{3}  % `prob' starts the (custom made, above) problem
+			%  and the 
+Consider the metric space $(X, d_{\rm disc})$, where $X$ is a nonempty set.  Suppose that $(x_n)_n$ is a sequence in $X$.  Show that
+\[
+	\lim_{n\to\infty} x_n = x
+\]
+if and only if there exists $N$ such that $x_n = x$ for all $n \geq N$.
+\end{prob}
+%Uncomment the lines below to solve the problem
+%\begin{solution}
+%This is a very elegant solution.
+%\end{solution}
+%\newpage
+
+
+
+\begin{prob}{4}  % `prob' starts the (custom made, above) problem
+			%  and the 
+Prove Young's inequality: for any $p,q >1$ such that
+\[
+	1
+		= \frac{1}{p} + \frac{1}{q}
+\]
+for any $x,y\in \R$,
+\[
+	xy \leq \frac{|x|^p}{p} + \frac{|y|^q}{q}.
+\]
+Hint: for any fixed $y \geq 0$, consider the function $f: [0,\infty) \to \R$, defined by
+\[
+	f(x) = \frac{x^p}{p} + \frac{y^q}{q} - xy,
+\]
+and show that the minimum of $f$ is zero.
+\end{prob}
+%Uncomment the lines below to solve the problem
+%\begin{solution}
+%This is a very elegant solution.
+%\end{solution}
+%\newpage
+
+
+
+\begin{prob}{5}  % `prob' starts the (custom made, above) problem
+			%  and the 
+Fix $N\geq 1$ and $p>1$.  Let $q$ be as in problem 4. Show the following:
+\begin{enumerate}[(i)]
+
+	\item Show that, for any $\bar x, \bar y \in \R^N$, we have
+		\[
+			x\cdot y \leq \frac{|x|_p^p}{p} + \frac{|y|_q^q}{q}.
+		\]
+		Recall that
+		\[
+			|x|_p = \left(|x_1|^p + \cdots + |x_N|^p\right)^{\sfrac1p},
+		\]
+		and similarly for $|\cdot|_q$.  
+	
+	\item Show that $d_p$ is a metric on $\R^N$.  You may find it helpful to write, for any $i=1,\dots, N$,
+		\[
+			|x_i - y_i|^p = (x_i - y_i) z_i
+		\]
+		for a well-chosen $z_i$.
+	
+\end{enumerate}
+\end{prob}
+%Uncomment the lines below to solve the problem
+%\begin{solution}
+%This is a very elegant solution.
+%\end{solution}
+%\newpage
+
+
+
+
+\begin{prob}{6}  % `prob' starts the (custom made, above) problem
+			%  and the 
+Suppose that $(X,d)$ is a metric space and $x,y,z\in X$.  Show that
+\[
+	d(x,z) \geq |d(x,y) - d(y,z)|.
+\]
+\end{prob}
+%Uncomment the lines below to solve the problem
+%\begin{solution}
+%This is a very elegant solution.
+%\end{solution}
+%\newpage
+
+
+
+
+
+\begin{prob}{7}  % `prob' starts the (custom made, above) problem
+			%  and the 
+Show that the following functions are continuous:
+\begin{enumerate}[(i)]
+
+	\item $\psi: \R \to \R$ defined by $\psi(x) = 2x^3 + 1$.
+	
+	\item $E: C(\R) \to \R$ defined by $E(f) = f(0)$
+
+	\item $\cS: C(\R) \to C(\R)$ defined by $\cS(f) = f^2$
+	
+\end{enumerate}
+You may find it helpful to note that $a^3 - b^3 = (a-b) (a^2 + ab + b^2)$.  Also, for (iii), please show that $\cS$ is well-defined; that is, show that $f^2 \in C(\R)$.
+\end{prob}
+%Uncomment the lines below to solve the problem
+%\begin{solution}
+%This is a very elegant solution.
+%\end{solution}
+%\newpage
+
+
+
+
+
+\begin{prob}{8}  % `prob' starts the (custom made, above) problem
+			%  and the 
+	Suppose that $d_1, d_2$ are equivalent metrics on a set $X$.  Suppose that $(Y,d_Y)$ is a metric space and $f: (X,d_1) \to (Y, d_Y)$ is continuous.  Show that $\tilde f: (X,d_2) \to (Y,d_Y)$, defined by $\tilde f(x) = f(x)$ for all $x\in X$, is continuous.
+\end{prob}
+%Uncomment the lines below to solve the problem
+%\begin{solution}
+%This is a very elegant solution.
+%\end{solution}
+%\newpage
+
+
+
+
+
+
+
+
+\end{document}
