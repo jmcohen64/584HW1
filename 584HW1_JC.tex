@@ -79,7 +79,11 @@ Fix any two points $x,y\in \R^n$.  Show that
 \end{prob}
 %Uncomment the lines below to solve the problem
 \begin{solution}
-	Let $i\leq n$ be defined such that $|x_i-y_i| \geq |x_m-y_m|$ for all $m\leq n$. By definition, $|x_i-y_i| = d_\infty(x,y)$. Notice that $$|x_i-y_i| \leq |x_1-y_1| + \dotsc + |x_i-y_i|+ \dotsc + |x_n-y_n|\leq n|x_i-y_i|.$$ Thus, $$|x_i-y_i|^p \leq |x_1-y_1|^p + \dotsc + |x_i-y_i|^p+ \dotsc + |x_n-y_n|^p\leq n|x_i-y_i|^p.$$ By taking the each expression in the inequality to the $1/p$ power, we get $$(|x_i-y_i|^p)^{\frac{1}{p}} \leq (|x_1-y_1|^p + \dotsc + |x_i-y_i|^p+ \dotsc +|x_n-y_n|^p)^{\frac{1}{p}} \leq (n|x_i-y_i|^p)^{\frac{1}{p}},$$ and $$|x_i-y_i| \leq d_p(x,y) \leq n^\frac{1}{p}|x_i-y_i|.$$ Taking the limit as p approaches infinity gives $$\lim_{p\to\infty}|x_i-y_i| \leq \lim_{p\to\infty}d_p(x,y) \leq \lim_{p\to\infty}n^\frac{1}{p}|x_i-y_i|.$$ Thus, $$d_\infty(x,y) \leq \lim_{p\to\infty}d_p(x,y) \leq d_\infty(x,y).$$ Therefore, by the Squeeze Theorem,
+	Let $i\leq n$ be defined such that $|x_i-y_i| \geq |x_m-y_m|$ for all $m\leq n$. By definition, $|x_i-y_i| = d_\infty(x,y)$. Notice that $$|x_i-y_i| \leq |x_1-y_1| + \dotsc + |x_i-y_i|+ \dotsc + |x_n-y_n|\leq n|x_i-y_i|.$$ Thus, $$|x_i-y_i|^p \leq |x_1-y_1|^p + \dotsc + |x_i-y_i|^p+ \dotsc + |x_n-y_n|^p\leq n|x_i-y_i|^p.$$ By taking each expression in the inequality to the $1/p$ power, we get $$(|x_i-y_i|^p)^{\frac{1}{p}} \leq (|x_1-y_1|^p + \dotsc + |x_i-y_i|^p+ \dotsc +|x_n-y_n|^p)^{\frac{1}{p}} \leq (n|x_i-y_i|^p)^{\frac{1}{p}},$$ and
+	\begin{equation}\label{e1}
+		|x_i-y_i| \leq d_p(x,y) \leq n^\frac{1}{p}|x_i-y_i|.
+	\end{equation}  
+	Taking the limit as p approaches infinity gives $$\lim_{p\to\infty}|x_i-y_i| \leq \lim_{p\to\infty}d_p(x,y) \leq \lim_{p\to\infty}n^\frac{1}{p}|x_i-y_i|.$$ Thus, $$d_\infty(x,y) \leq \lim_{p\to\infty}d_p(x,y) \leq d_\infty(x,y).$$ Therefore, by the Squeeze Theorem,
 	\[
 	\lim_{p\to\infty} d_p(x,y) = d_\infty(x,y).
 	\]
@@ -102,10 +106,30 @@ Fix $p_1,p_2 \in [1,\infty]$ such that $p_1 < p_2$ (we allow the case $p_2 = \in
 for all $x,y \in \R^N$.  Hint: you may find it helpful to do the case $p_1 = 1$ and $p_2=\infty$ first.
 \end{prob}
 %Uncomment the lines below to solve the problem
-%\begin{solution}
-%This is a very elegant solution.
-%\end{solution}
-%\newpage
+\begin{solution}
+	The corresponding $d_{p_1}(\bar x, \bar y)$ for $p_1$. Let $d_\infty(\bar x, \bar y) = |x_i-y_i|$ for some $i\leq N$. By \eqref{e1}, we see that $$n^{-\frac{1}{p_1}}d_{p_1}(x,y) \leq |x_i-y_i|.$$ By setting $\underline C = n^{-\frac{1}{p_1}}$, we get $\underline C d_{p_1}(\bar x,\bar y) \leq d_\infty(\bar x, \bar y)$. Since the choice of $p_1\geq 1$ was arbitrary, this is valid for any $d_p(\bar x, \bar y)$.
+	
+	For the same $d_\infty(\bar x, \bar y)$, factoring out $|x_i-y_i|^{p_1}$ from the expression for $d_{p_1}(\bar x, \bar y)$ gives 
+	\[\begin{split}
+	d_{p_1}(\bar x, \bar y) &= \left [ |x_i-y_i|^{p_1} \left ( \frac{|x_1-y_1|^{p_1}}{|x_i-y_i|^{p_1}} + \dotsc + \frac{|x_i-y_i|^{p_1}}{|x_i-y_i|^{p_1}} + \dotsc \frac{|x_N-y_N|^{p_1}}{|x_i-y_i|^{p_1}} \right ) \right ] ^{1/{p_1}} \\
+	&=|x_i-y_i| \left [ \left ( \frac{|x_1-y_1|}{|x_i-y_i|} \right )^{p_1} + \dotsc + 1 + \dotsc \left ( \frac{|x_N-y_N|}{|x_i-y_i|} \right )^{p_1} \right ] ^{1/{p_1}}.
+	\end{split}
+	\]
+	Let $a_m = \frac{|x_m-y_m|}{|x_i-y_i|}$ for each $m\leq N$. Since $|x_i-y_i| \geq |x_m-y_m|$, $a_m<1$ for all $m \leq N$. Thus, 
+	\begin{equation}\label{e2}
+		d_{p_1}(\bar x, \bar y) = |x_i-y_i| (a_1^{p_1} + \dotsc + 1 + \dotsc + a_N^{p_1})^{1/p_1}.
+	\end{equation}
+	Since we set $d_\infty(\bar x, \bar y) = |x_i-y_i|$, $$d_{p_1}(\bar x, \bar y) = d_\infty(\bar x, \bar y) (a_1^{p_1} + \dotsc + 1 + \dotsc + a_N^{p_1})^{1/p_1}.$$ Because $a_1^{p_1} + \dotsc + 1 + \dotsc + a_N^{p_1} > 1$, $(a_1^{p_1} + \dotsc + 1 + \dotsc + a_N^{p_1})^{1/p_1} > 1$. Therefore, $$d_\infty(\bar x, \bar y)\leq d_{p_1}(\bar x, \bar y).$$ Thus, 
+	\begin{equation}\label{e3} 
+		\underline C d_{p_1}(\bar x, \bar y) \leq d_\infty(\bar x, \bar y)\leq \overline C d_{p_1}(\bar x, \bar y) 
+	\end{equation}	
+	where $\underline C = n^{-\frac{1}{p_1}}$ and $\overline C = 1$.
+	
+	Consider the $p_2$ metric on the same vectors $\bar x$ and $\bar y$. Equation \eqref{e2} for $p_2$ gives $$d_{p_2}(\bar x, \bar y) = |x_i-y_i| (a_1^{p_2} + \dotsc + 1 + \dotsc + a_N^{p_2})^{1/p_2}.$$ Since $p_2 > p_1$ and $a_m < 1$, $a_m^{p_2}\leq a_m^{p_1}$ and $$(a_1^{p_2} + \dotsc + 1 + \dotsc + a_N^{p_2})^{1/p_2} \leq a_1^{p_1} + \dotsc + 1 + \dotsc + a_N^{p_1})^{1/p_1}.$$ Therefore, $$d_{p_2}(\bar x, \bar y) \leq d_{p_1}(\bar x, \bar y).$$ Combining this with \eqref{e3} gives $$n^{-\frac{1}{p_1}}d_{p_1}(\bar x, \bar y) \leq d_\infty(\bar x, \bar y) \leq d_{p_2}(\bar x, \bar y) \leq d_{p_1}(\bar x, \bar y).$$ Thus, $$\underline C d_{p_1}(\bar x, \bar y) \leq d_{p_2}(\bar x, \bar y)
+	\leq \overline C d_{p_1}(\bar x, \bar y)$$ where $\underline C = n^{-\frac{1}{p_1}}$ and $\overline C = 1$.
+	
+\end{solution}
+\newpage
 
 
 
@@ -121,10 +145,12 @@ Consider the metric space $(X, d_{\rm disc})$, where $X$ is a nonempty set.  Sup
 if and only if there exists $N$ such that $x_n = x$ for all $n \geq N$.
 \end{prob}
 %Uncomment the lines below to solve the problem
-%\begin{solution}
-%This is a very elegant solution.
-%\end{solution}
-%\newpage
+\begin{solution}
+	Fix any $\epsilon$ such that $0 < \epsilon < 1$. Since $\lim_{n\to\infty} x_n = x$, there must exist $N \in \N $ such that $d_{disc}(x_n,x)< \epsilon$ whenever $n\geq N$. Since we are in the discrete metric, $d_{disc}(x_n,x)< 1$ only when $x_n = x$. Therefore, $x_n = x$ for all $n\geq N$.
+	
+	Assume there exists some $N\in \N$ such that for all $n\geq N$, $x_n = n$. Thus, for all $n\geq N$, $d_{disc}(x_, x)  = 0$. Therefore, $d_{disc}(x_, x) < \epsilon$ for any $\epsilon > 0$. Thus, $\lim_{n\to\infty} x_n = x$.
+\end{solution}
+\newpage
 
 
 
