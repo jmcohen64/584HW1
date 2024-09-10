@@ -83,7 +83,7 @@ Fix any two points $x,y\in \R^n$.  Show that
 	\begin{equation}\label{e1}
 		|x_i-y_i| \leq d_p(x,y) \leq n^\frac{1}{p}|x_i-y_i|.
 	\end{equation}  
-	Taking the limit as p approaches infinity gives $$\lim_{p\to\infty}|x_i-y_i| \leq \lim_{p\to\infty}d_p(x,y) \leq \lim_{p\to\infty}n^\frac{1}{p}|x_i-y_i|.$$ Thus, $$d_\infty(x,y) \leq \lim_{p\to\infty}d_p(x,y) \leq d_\infty(x,y).$$ Therefore, by the Squeeze Theorem,
+	Taking the limit as p approaches infinity gives $$\lim_{p\to\infty}|x_i-y_i| \leq \lim_{p\to\infty}d_p(x,y) \leq \lim_{p\to\infty}n^\frac{1}{p}|x_i-y_i|.$$ Thus, $$d_\infty(x,y) \leq \lim_{p\to\infty}d_p(x,y) \leq d_\infty(x,y).$$ Therefore, by the trichotomy,
 	\[
 	\lim_{p\to\infty} d_p(x,y) = d_\infty(x,y).
 	\]
@@ -172,10 +172,43 @@ Hint: for any fixed $y \geq 0$, consider the function $f: [0,\infty) \to \R$, de
 and show that the minimum of $f$ is zero.
 \end{prob}
 %Uncomment the lines below to solve the problem
-%\begin{solution}
-%This is a very elegant solution.
-%\end{solution}
-%\newpage
+\begin{solution}
+	Consider first the function $f:[0,\infty)\to \R$ defined by
+	\[
+	f(x) = \frac{x^p}{p} + \frac{y^q}{q} - xy.
+	\]
+	For a fixed $y\geq 0$, we will show that the minimum of this function is zero, and thus  
+	\[
+	\frac{x^p}{p} + \frac{y^q}{q} > xy.
+	\]
+	Checking first the bounds at $x=0$ and the limit as $x\to\infty$ gives $$f(0) = \frac{y^q}{q}\quad \text{ and }\quad \lim_{x\to\infty} f(x) = \infty.$$ Since $y\geq 0$, $f(0)\geq 0$.
+	
+	Taking the derivative and second derivative of $f(x)$ with respect to $x$ gives $$f^\prime(x)= x^{p-1}-y \text { and } f^{\prime \prime} = (p-1)x^{p-2}.$$ Solving for $f^\prime(x) = 0$ gives a critical point at $x = y^{\frac{q}{p}}$. Since $p>1$ and $x\geq 0$, $f^{\prime \prime} \geq 0$ for all $x\in [0,\infty)$. This critical point is therefore, a local minimum. Evaluating $f$ at this value of $x$ gives
+	\[\begin{split}
+		f(x = y^{\frac{q}{p}}) &= \frac{(y^{\frac{q}{p}})^p}{p} + \frac{y}{q} -y^{\frac{q}{p}}y\\
+		&= \frac{y^q}{p}+\frac{y^q}{q}-y^{\frac{q+p}{p}}\\
+		&= y^q \left ( \frac{1}{p} + \frac{1}{q} \right ) - y^{\frac{q+p}{p}}\\
+		&=y^q - y^{\frac{q+p}{p}}
+	\end{split}	
+	\]
+	To continue, we need a rearrangement of Young's Inequality.
+	\[\begin{split}
+		1 &= \frac{1}{p} + \frac{1}{q}\\
+		&= \frac{q}{pq} + \frac{p}{pq}\\
+		&= \frac{p+q}{pq}
+	\end{split}
+	\]
+	Thus,
+	\[\begin{split}
+		f(x = y^{\frac{q}{p}}) &= y^q - y^{q(\frac{q+p}{pq})}\\
+		&= y^q - y^{q(1)}\\
+		& = 0.
+	\end{split}	
+	\]
+	Therefore, zero is the absolute minimum of this function. Since an identical argument can be made for $y$, $f(x)\geq 0$ for all $x,y\geq 0$. In this case, $x = |x|$ and $y = |y|$, and $$|x||y| \leq \frac{|x|^p}{p} + \frac{|y|^q}{q}.$$ Finally, by Cauchy-Schwarz inequality, $$xy \leq \frac{|x|^p}{p} + \frac{|y|^q}{q}.$$ for any $x,y \in \R$.
+	
+\end{solution}
+\newpage
 
 
 
@@ -203,10 +236,112 @@ Fix $N\geq 1$ and $p>1$.  Let $q$ be as in problem 4. Show the following:
 \end{enumerate}
 \end{prob}
 %Uncomment the lines below to solve the problem
-%\begin{solution}
-%This is a very elegant solution.
-%\end{solution}
-%\newpage
+\begin{solution}[Part (i)]
+	 The dot product of the vectors $\bar x$ and $\bar y$ is $$\bar x \cdot \bar y = x_1y_1 + \dotsc + x_Ny_N.$$ Since $p$ and $q$ satisfy Young's Inequality, $$x_ny_n \leq \frac{|x_n|^p}{p} + \frac{|y_n|^q}{q}.$$ for $n\leq N$. Thus, $$\bar x \cdot \bar y \leq \left ( \frac{|x_1|^p}{p} + \frac{|y_1|^q}{q} \right ) + \dotsc + \left( \frac{|x_N|^p}{p} + \frac{|y_N|^q}{q}\right ).$$ Combining the terms containing $x$ and the terms containing $y$ gives 
+	 \[\begin{split}
+	 \bar x \cdot \bar y &\leq \left ( \frac{|x_1|^p+ \dotsc + |x_N|^p}{p} \right ) + \left( \frac{|y_1|^q+\dotsc+|y_N|^q}{q}\right )\\
+	 &\leq \frac{|\bar x|_p^p}{p} + \frac{|\bar y|_q^q}{q}.
+	 \end{split}\]
+	 
+\end{solution}
+
+\begin{solution}[Part (ii)]
+	To show that $d_p$ is a metric on $\R ^N$, recall the definition of $d_p$ for any $p>1$: $$d_p(\bar x, \bar y) = \left(|x_1-y_1|^p + \cdots + |x_N-y_n|^p\right)^{\sfrac1p}.$$ Fix any $n\leq N$. Since, $|x_n-y_n| = 0$ only when $x_n = y_n$, $|x_n-y_n|^p = 0$ only when $x_n = y_n$. Since the choice of $n$ was arbitrary $|x_1-y_1|^p + \cdots + |x_N-y_n|^p = 0$ only if $x_n = y_n$ for all $n\leq N$. The same can also be said about that sum raised to the $\sfrac{1}{p}$ power, thus satisfying positive definiteness.
+	
+	Consider $$d_p(\bar y, \bar x) = \left(|y_1-x_1|^p + \cdots + |y_N-x_n|^p\right)^{\sfrac1p}.$$ Since $|a-b| = |b-a|$ for all $a,b \in \R$, $d_p(\bar y, \bar x) = d_p(\bar x, \bar y)$. Therefore, $d_p(\bar y, \bar x)$ satisfies the symmetry property of metric spaces.
+	
+	To prove the Triangle inequality, we first prove the Cauchy-Schwarz inequality for this system. Fix $\epsilon \ge 0$ to be chosen and consider the product $\epsilon \bar x \cdot \sfrac{\bar y}{\epsilon}$. By part (i) of this problem we have $$\epsilon \bar x \cdot \frac{\bar y}{\epsilon} \leq \frac{\epsilon^p|\bar x|_p^p}{p} + \frac{|\bar y|_q^q}{\epsilon^q q}.$$ We wish to find the value of epsilon for which this upper bound is minimized. Taking the derivative with respect to epsilon and setting that value equal to zero gives
+	\[\begin{split}
+		0 &= \frac{p\epsilon^{p-1}|\bar x|_p^p}{p} + \frac{-q|\bar y|_q^q}{\epsilon^{q+1}q} \\
+		&=\epsilon^{p-1}|\bar x|_p^p - |\bar y|_q^q\epsilon^{-q-1}.
+	\end{split}
+	\]
+	Rearranging and solving for epsilon gives
+	\[\begin{split}
+		|\bar y|_q^q\epsilon^{-q-1} &= \epsilon^{p-1}|\bar x|_p^p,\\
+		\frac{|\bar y|_q^q}{|\bar x|_p^p} &= \epsilon^{p-1}\epsilon^{q+1},\\
+		\left ( \frac{|\bar y|_q^q}{|\bar x|_p^p} \right )^\frac{1}{p+q} &= \epsilon.
+	\end{split}
+	\]
+	Using eq 3, this becomes $$\left ( \frac{|\bar y|_q^q}{|\bar x|_p^p} \right )^\frac{1}{pq} = \epsilon.$$ Using this value for epsilon in our original inequality gives and simplifying gives
+	\[\begin{split}
+		\epsilon \bar x \cdot \frac{\bar y}{\epsilon} &\leq \left [ \left ( \frac{|\bar y|_q^q}{|\bar x|_p^p} \right )^\frac{1}{pq} \right ]^p \frac{|\bar x|_p^p}{p} + \left[ \left ( \frac{|\bar y|_q^q}{|\bar x|_p^p} \right )^\frac{1}{pq} \right ] ^{-q} \frac{|\bar y|_q^q}{q}\\
+		&= \left ( \frac{|\bar y|_q^q}{|\bar x|_p^p} \right )^\frac{1}{q} \frac{|\bar x|_p^p}{p} + \left ( \frac{|\bar y|_q^q}{|\bar x|_p^p} \right )^\frac{-1}{p} \frac{|\bar y|_q^q}{q}\\
+		&= \left ( \frac{|\bar y|_q^{q/q}}{|\bar x|_p^{p/q}} \right ) \frac{|\bar x|_p^p}{p} + \left ( \frac{|\bar y|_q^{-q/p}}{|\bar x|_p^{-p/p}} \right ) \frac{|\bar y|_q^q}{q}\\
+		&= \frac{|\bar y|_q|\bar x|_p^{p-p/q}}{p} + \frac{|\bar x|_p|\bar y|_q^{q-q/p}}{q}\\
+	\end{split}
+	\]
+	To simplify further consider a rearrangement of Young's Inequality:
+	\[\begin{split}
+		1 &= \frac{1}{p} + \frac{1}{q}\\
+		1-\frac{1}{p} &= \frac{1}{q}\\
+		q-\frac{q}{p} &= 1.
+	\end{split}
+	\]
+	By similar steps, the same inequality holds if the positions of $p$ and $q$ are swapped. Continuing with the simplification gives
+	\[\begin{split}
+		\epsilon \bar x \cdot \frac{\bar y}{\epsilon} &\leq \frac{|\bar y|_q|\bar x|_p^{1}}{p} + \frac{|\bar x|_p|\bar y|_q^{1}}{q}\\
+		&= |\bar y|_q|\bar x|_p \left ( \frac{1}{p} + \frac{1}{q} \right )\\
+		&= |\bar y|_q|\bar x|_p.
+	\end{split}
+	\]
+	To prove the triangle inequality for $d_p$, we start by proving $|\bar x + \bar y|_p \leq |\bar x_p| + |\bar y_p|$ for any $\bar x, \bar y \in \R^N$. Let $|x_i + y_i|^p = (x_i+y_i)z_i$. For this to hold $z_i = |x_i+y_i|^{p-1}sign(x_i+y_i)$ where \[sign(x) = 
+	\begin{cases}
+		0 \quad &\text{ if } x =0\\
+		1 \quad &\text{ if } x>0\\
+		-1 \quad &\text { if } x<0.
+	\end{cases}\]
+	Thus, 
+	\[\begin{split}
+		|\bar x + \bar y|_p^p &= |x_1 + y_1|^p + \dotsc + |x_1 + y_1|^p\\
+		&=(x_1 + y_1)z_1 + \dotsc + (x_1 + y_1)z_N\\
+		&= (x_1z_1 + \dotsc + x_Nz_N) + (y_1z_1+ \dotsc + y_Nz_N)\\
+		&= \bar x \cdot \bar z + \bar y \cdot \bar z\\
+		&\leq |\bar x|_p|\bar z|_q + |\bar y|_p|\bar z|_q\\
+		&= (|\bar x|_p| + |\bar y|_p)|\bar z|_q.
+	\end{split}\]
+	We now compute $|\bar z|_q$.
+	\[
+	\begin{split}
+		|\bar z|_q &= \left ( \sum_{i=1}^{N} \left [|x_i+y_i|^{p-1}sign(x_i+y_i) \right ] ^q \right ) ^{1/q}\\
+		&= \left ( \sum_{i=1}^{N} |x_i+y_i|^{q(p-1)} \right ) ^{1/q}.
+	\end{split}\]
+	The $sign(x_i+y_i)$ terms can be removed within the absolute value as $|-1| = |1|$ and if $sign(x_i+y_i) = 0$, $|x_i+y_i|^{p-1} = 0$ as well. Thus, the values are unchanged. By eq 3, 
+	\[\begin{split}
+		qp-q &= (p+q) - q\\
+		&= p.
+	\end{split}\]
+	Thus,
+	\[
+	\begin{split}
+		|\bar z|_q &= \left ( \sum_{i=1}^{N} |x_i+y_i|^{p} \right ) ^{1/q}\\
+		&= |\bar x + \bar y|_p^{\sfrac{p}{q}}
+	\end{split}\]
+	Returning to our expression for $|\bar x + \bar y|_p^p$, 
+	\[\begin{split}
+		|\bar x + \bar y|_p^p &\leq (|\bar x|_p| + |\bar y|_p)|\bar z|_q\\
+		&=(|\bar x|_p| + |\bar y|_p) |\bar x + \bar y|_p^{\sfrac{p}{q}}.
+	\end{split}\]
+	Thus,
+	\[\begin{split}
+		|\bar x|_p| + |\bar y|_p &\geq \frac{|\bar x + \bar y|_p^p}{|\bar x + \bar y|_p^{\sfrac{p}{q}}}\\
+		&= |\bar x + \bar y|_p^{p-\sfrac{p}{q}}\\
+		&= |\bar x + \bar y|_p.
+	\end{split}\]
+	Since $p-\sfrac{p}{q} = 1$ as shown in eq 3, $$|\bar x|_p| + |\bar y|_p \geq|\bar x + \bar y|_p.$$
+	Consider again $d_p$. 
+	\[\begin{split}
+		d_p(\bar x, \bar z) &= |\bar x - \bar z|_p\\
+		&= |(\bar x -\bar y) + (\bar y - \bar z)|_p.
+	\end{split}\]
+	By the above inequality,
+	\[\begin{split}
+		d_p(\bar x, \bar z) &\leq |\bar x -\bar y|_p + |\bar y - \bar z|_p\\
+		&\leq d_p(\bar x, \bar y) + d_p(\bar y, \bar z).
+	\end{split}\]
+	Thus, $d_p$ satisfies the triangle inequality, and is therefore a metric.
+\end{solution}	
+\newpage
 
 
 
